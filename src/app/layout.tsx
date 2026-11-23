@@ -17,10 +17,18 @@ const jetbrains = JetBrains_Mono({
 const description =
   "Preet Kumar, frontend engineer. React, Next.js and TypeScript, with a soft spot for performance.";
 
+// Absolute base for share-image URLs. Vercel sets VERCEL_PROJECT_PRODUCTION_URL
+// (e.g. preetbhardwaj.vercel.app); locally it falls back to localhost.
+const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : "http://localhost:3000";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: `${profile.name} · ${profile.role}`,
   description,
-  openGraph: { title: `${profile.name} · ${profile.role}`, description, type: "website" },
+  openGraph: { title: `${profile.name} · ${profile.role}`, description, type: "website", url: "/" },
+  twitter: { card: "summary_large_image", title: `${profile.name} · ${profile.role}`, description },
 };
 
 export const viewport: Viewport = {
