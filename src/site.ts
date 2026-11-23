@@ -1,15 +1,12 @@
 import { profile } from "./content";
 
 /**
- * Absolute site URL. Vercel sets VERCEL_PROJECT_PRODUCTION_URL
- * (e.g. preetbhardwaj.vercel.app); set NEXT_PUBLIC_SITE_URL to override
- * once you have a custom domain. Locally it falls back to localhost.
+ * Absolute site URL used for canonical links, sitemap and share images.
+ * NEXT_PUBLIC_SITE_URL overrides it (e.g. a custom domain later);
+ * on Vercel it's profile.site; locally it's localhost.
  */
 export const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL
-    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : "http://localhost:3000")
+  process.env.NEXT_PUBLIC_SITE_URL ?? (process.env.VERCEL ? profile.site : "http://localhost:3000")
 ).replace(/\/$/, "");
 
 export const seo = {

@@ -17,6 +17,8 @@ export const profile = {
   email: "preetb059@gmail.com",
   resume: "/Preet_Kumar_Resume.pdf",
   github: "LitPreet",
+  // Main public address. Google indexes this one; other domains point here.
+  site: "https://preetbhardwaj.vercel.app",
   links: {
     github: "https://github.com/LitPreet",
     linkedin: "https://www.linkedin.com/in/preet-bhardwaj16/",
