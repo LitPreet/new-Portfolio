@@ -1,26 +1,138 @@
 @import "tailwindcss";
 
+/* Colors live in CSS variables so light/dark is a variable swap.
+   The accent comes from a swatch (data-accent on <html>); each swatch
+   only sets raw light/dark values, and the theme blocks pick one. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* default swatch: emerald */
+  --acc-l: #0f7a55;
+  --acc-d: #45d69b;
+  --accsoft-l: #e7f5ee;
+  --accsoft-d: #0f261d;
+  --bub: #0f7a55;
+}
+:root[data-accent="blue"] {
+  --acc-l: #2f55e4;
+  --acc-d: #86a0ff;
+  --accsoft-l: #ecf0ff;
+  --accsoft-d: #151c36;
+  --bub: #2f55e4;
+}
+:root[data-accent="violet"] {
+  --acc-l: #6d3fdb;
+  --acc-d: #b49cff;
+  --accsoft-l: #f2edff;
+  --accsoft-d: #211836;
+  --bub: #6d3fdb;
+}
+:root[data-accent="rose"] {
+  --acc-l: #c92a62;
+  --acc-d: #ff8fb4;
+  --accsoft-l: #fdeef3;
+  --accsoft-d: #33141f;
+  --bub: #c92a62;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  --bg: #ffffff;
+  --ink: #111111;
+  --ink-2: #555555;
+  --ink-3: #6e6e6e;
+  --line: #e7e7e7;
+  --soft: #f1f1f2;
+  --accent: var(--acc-l);
+  --accent-soft: var(--accsoft-l);
+  --bubble: var(--bub);
+  --pix-k: #2b2b2b;
+  color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme="light"]) {
+    --bg: #0f0f0f;
+    --ink: #ededed;
+    --ink-2: #ababab;
+    --ink-3: #8a8a8a;
+    --line: #262626;
+    --soft: #1d1d1d;
+    --accent: var(--acc-d);
+    --accent-soft: var(--accsoft-d);
+    --pix-k: #d4d4d4;
+    color-scheme: dark;
   }
 }
 
+:root[data-theme="dark"] {
+  --bg: #0f0f0f;
+  --ink: #ededed;
+  --ink-2: #ababab;
+  --ink-3: #8a8a8a;
+  --line: #262626;
+  --soft: #1d1d1d;
+  --accent: var(--acc-d);
+  --accent-soft: var(--accsoft-d);
+  --pix-k: #d4d4d4;
+  color-scheme: dark;
+}
+
+/* Theme / color switches use the View Transitions API: the new look
+   grows out of the tap point as a circle (see theme.ts). */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-soft: var(--soft);
+  --color-accent: var(--accent);
+  --color-bubble: var(--bubble);
+  --color-accent-soft: var(--accent-soft);
+  --font-sans: var(--font-hanken);
+  --font-mono: var(--font-jetbrains);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  overflow-x: clip; /* decorations (lamp glow, plane) never cause sideways scroll */
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-hanken), -apple-system, system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* dashed underline used for inline links, like a hand-drawn note */
+.dash {
+  text-decoration: underline dashed;
+  text-decoration-color: var(--ink-3);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s, color 0.2s;
+}
+.dash:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
 }

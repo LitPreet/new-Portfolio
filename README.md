@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Preet Kumar — Portfolio
 
-## Getting Started
+Personal portfolio built with **Next.js 16**, **React 19**, **Tailwind CSS 4** and **Motion** (Framer Motion). Mobile-first, statically prerendered, light/dark theme.
 
-First, run the development server:
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm start        # serve the build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Edit content
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+All copy — name, stats, projects, experience, skills, contact chat — lives in [`src/content.ts`](src/content.ts). Change it there; components read from it.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Files in `public/` (resume, screenshots) are served from the site root, e.g. `/Preet_Kumar_Resume.pdf`.
 
-## Learn More
+## Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+  app/
+    layout.tsx       fonts (Hanken Grotesk + JetBrains Mono), metadata, theme bootstrap
+    page.tsx         section order
+    globals.css      color tokens + accent swatches (emerald default, blue, violet, rose)
+  components/
+    Intro.tsx        status pill, photo frame + name (↔ Hindi), headline, rotating line, bio
+    Lamp.tsx         pixel desk lamp — toggles dark mode with a circular reveal; stars at night
+    PaperPlane.tsx   pixel plane that drifts across the screen
+    WorkList.tsx     meta | title + description rows (work, experience, toolkit)
+    GitHub.tsx       contribution graph, cached and refreshed daily
+    Chat.tsx         "Let's talk" scripted chat with typing indicator; press C to copy email
+    Footer.tsx       contact links, color swatches, live clock, pixel cat (tap to wake)
+    Pixel.tsx        tiny pixel-art renderer + the art itself
+  content.ts         all site copy
+legacy/              previous single-file HTML versions
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Your photo
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Put a square photo at `public/me.jpg`, then in `src/content.ts` set `photo: "/me.jpg"`. Until then the frame shows your initials.
 
-## Deploy on Vercel
+## Notes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Animations respect the OS "reduce motion" setting (`MotionConfig reducedMotion="user"`).
+- Fonts: Hanken Grotesk (text) and JetBrains Mono (labels), self-hosted via `next/font`.
+- Deploy: push to GitHub and import the repo on Vercel — no config needed.
