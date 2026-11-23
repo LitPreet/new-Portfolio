@@ -26,7 +26,7 @@ export function Intro() {
 
       <motion.h1
         variants={item}
-        className="mt-10 text-[clamp(34px,10vw,46px)] leading-[1.02] font-semibold tracking-[-0.035em]"
+        className="mt-9 text-[25px] leading-[1.15] font-semibold tracking-[-0.025em] sm:text-[30px]"
       >
         <Headline />
       </motion.h1>
@@ -106,27 +106,16 @@ function Identity() {
   );
 }
 
-/** Headline with the {braced} word in accent, with speed lines streaking behind it. */
+/** Headline with the {braced} word in accent; it leans forward every few seconds. */
 function Headline() {
   const [before, word, after] = headline.split(/[{}]/);
   return (
     <>
       {before}
-      <span className="relative inline-block text-accent">
-        <span aria-hidden className="absolute top-1/2 right-full mr-1 flex -translate-y-1/2 flex-col items-end gap-[5px]">
-          {[22, 34, 16].map((w, i) => (
-            <motion.span
-              key={i}
-              className="block h-[3px] rounded-full bg-accent"
-              initial={{ width: 0, opacity: 0 }}
-              animate={{ width: [0, w, 0], opacity: [0, 0.7, 0], x: [16, 0, -10] }}
-              transition={{ duration: 1.1, delay: 1 + i * 0.12, repeat: Infinity, repeatDelay: 3.2, ease: "easeOut" }}
-            />
-          ))}
-        </span>
+      <span className="inline-block text-accent">
         <motion.span
           className="inline-block"
-          animate={{ x: [0, 10, 0], skewX: [0, -12, 0] }}
+          animate={{ x: [0, 4, 0], skewX: [0, -10, 0] }}
           transition={{ duration: 0.6, delay: 1, repeat: Infinity, repeatDelay: 3.7, ease }}
         >
           {word}
