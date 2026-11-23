@@ -10,7 +10,7 @@ export const siteUrl = (
 ).replace(/\/$/, "");
 
 export const seo = {
-  title: `${profile.searchName} (${profile.otherName}) · ${profile.role}`,
+  title: `${profile.searchName} · ${profile.role}`,
   description: `${profile.searchName}, also known as ${profile.otherName}, is a frontend engineer in ${profile.city}, India. He builds fast, polished web apps with React, Next.js and TypeScript, and currently works on Mokkup.ai at NeenOpal.`,
 };
 
