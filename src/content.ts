@@ -8,7 +8,7 @@ export const profile = {
   aliases: ["Preet Kumar", "Preet Kumar Bhardwaj", "प्रीत भारद्वाज"],
   nameNative: "प्रीत भारद्वाज", // shown when the name is tapped / hovered
   role: "Frontend Engineer",
-  initials: "PK",
+  initials: "PB",
   // Drop your photo at public/me.jpg and set this to "/me.jpg".
   photo: "/me.jpg" as string | null,
   location: "India",
