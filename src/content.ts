@@ -1,20 +1,24 @@
 // All site copy lives here — edit this file to update the portfolio.
 
 export const profile = {
-  name: "Preet Kumar",
+  name: "Preet Kumar", // shown on the page
+  fullName: "Preet Kumar Bhardwaj",
+  searchName: "Preet Bhardwaj", // main name for Google
+  aliases: ["Preet Kumar", "Preet Kumar Bhardwaj", "प्रीत कुमार"],
   nameNative: "प्रीत कुमार", // shown when the name is tapped / hovered
   role: "Frontend Engineer",
   initials: "PK",
   // Drop your photo at public/me.jpg and set this to "/me.jpg".
   photo: "/me.jpg" as string | null,
   location: "India",
+  city: "Gurugram",
   timezone: "Asia/Kolkata",
   email: "preetb059@gmail.com",
   resume: "/Preet_Kumar_Resume.pdf",
   github: "LitPreet",
   links: {
     github: "https://github.com/LitPreet",
-    linkedin: "https://www.linkedin.com/in/preet-bhardwaj16/", // TODO: add your handle
+    linkedin: "https://www.linkedin.com/in/preet-bhardwaj16/",
   },
 };
 

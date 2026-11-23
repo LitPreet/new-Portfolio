@@ -5,7 +5,7 @@ import { lampRows } from "@/components/Pixel";
 import { headline, profile } from "@/content";
 
 // Share card shown by LinkedIn (Featured), WhatsApp, X, Slack… when the link is pasted.
-export const alt = `${profile.name} · ${profile.role}`;
+export const alt = `${profile.fullName} (${profile.searchName}) · ${profile.role}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

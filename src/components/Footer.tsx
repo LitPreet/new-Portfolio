@@ -54,6 +54,9 @@ export function Footer() {
           <p className="font-mono text-[13px] text-ink-3 tabular-nums">
             {time || "--:--:-- --"} · {profile.location}
           </p>
+          <p className="text-[12.5px] text-ink-3">
+            © 2026 {profile.fullName} · {profile.searchName}
+          </p>
         </div>
         <Cat />
       </div>

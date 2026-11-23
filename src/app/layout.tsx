@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 import { Providers } from "@/components/Providers";
 import { profile } from "@/content";
+import { seo, siteUrl } from "@/site";
 import "./globals.css";
 
 const hanken = Hanken_Grotesk({
@@ -14,21 +15,46 @@ const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
 });
 
-const description =
-  "Preet Kumar, frontend engineer. React, Next.js and TypeScript, with a soft spot for performance.";
-
-// Absolute base for share-image URLs. Vercel sets VERCEL_PROJECT_PRODUCTION_URL
-// (e.g. preetbhardwaj.vercel.app); locally it falls back to localhost.
-const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
-  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-  : "http://localhost:3000";
-
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: `${profile.name} · ${profile.role}`,
-  description,
-  openGraph: { title: `${profile.name} · ${profile.role}`, description, type: "website", url: "/" },
-  twitter: { card: "summary_large_image", title: `${profile.name} · ${profile.role}`, description },
+  title: seo.title,
+  description: seo.description,
+  applicationName: `${profile.searchName} · Portfolio`,
+  authors: [{ name: profile.fullName, url: siteUrl }],
+  creator: profile.fullName,
+  keywords: [
+    "Preet Bhardwaj",
+    "Preet Kumar",
+    "Preet Kumar Bhardwaj",
+    "Preet Bhardwaj frontend engineer",
+    "Preet Kumar frontend developer",
+    "LitPreet",
+    "frontend engineer Gurugram",
+    "React developer",
+    "Next.js developer",
+  ],
+  alternates: { canonical: "/" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  },
+  openGraph: {
+    type: "profile",
+    url: "/",
+    siteName: `${profile.searchName} · Portfolio`,
+    title: seo.title,
+    description: seo.description,
+    locale: "en_IN",
+    firstName: "Preet",
+    lastName: "Bhardwaj",
+    username: profile.github,
+  },
+  twitter: { card: "summary_large_image", title: seo.title, description: seo.description },
+  // Paste the code from Google Search Console into the env var on Vercel.
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : undefined,
 };
 
 export const viewport: Viewport = {

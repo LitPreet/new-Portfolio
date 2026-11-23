@@ -24,12 +24,12 @@ export function Intro() {
         <Identity />
       </motion.div>
 
-      <motion.h1
+      <motion.p
         variants={item}
         className="mt-9 text-[25px] leading-[1.15] font-semibold tracking-[-0.025em] sm:text-[30px]"
       >
         <Headline />
-      </motion.h1>
+      </motion.p>
 
       <motion.p variants={item} className="mt-3 text-[17px] text-ink-2">
         Frontend engineer who <Rotator />
@@ -83,7 +83,7 @@ function Identity() {
         {profile.photo ? (
           <Image
             src={profile.photo}
-            alt={profile.name}
+            alt={`${profile.fullName} (${profile.searchName}), frontend engineer`}
             width={196}
             height={196}
             priority
@@ -171,7 +171,7 @@ function NameSwap() {
   }, [reduce]);
 
   return (
-    <p className="text-[22px] leading-tight font-semibold tracking-[-0.02em]">
+    <h1 className="text-[22px] leading-tight font-semibold tracking-[-0.02em]">
       <button
         type="button"
         onClick={() => setNative((v) => !v)}
@@ -195,6 +195,6 @@ function NameSwap() {
           </motion.span>
         </AnimatePresence>
       </button>
-    </p>
+    </h1>
   );
 }

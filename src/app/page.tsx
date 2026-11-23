@@ -7,10 +7,16 @@ import { Lamp } from "@/components/Lamp";
 import { PaperPlane } from "@/components/PaperPlane";
 import { WorkList } from "@/components/WorkList";
 import { Label, Reveal } from "@/components/ui";
+import { jsonLd } from "@/site";
 
 export default function Home() {
   return (
     <>
+      {/* structured data: tells search engines who this page is about */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd()).replace(/</g, "\\u003c") }}
+      />
       <PaperPlane />
       <main className="relative mx-auto max-w-[540px] px-4 pt-5 sm:px-4 sm:pt-6">
         <Lamp />
