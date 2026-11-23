@@ -14,7 +14,7 @@ export const profile = {
   github: "LitPreet",
   links: {
     github: "https://github.com/LitPreet",
-    linkedin: "https://www.linkedin.com/in/YOUR-HANDLE", // TODO: add your handle
+    linkedin: "https://www.linkedin.com/in/preet-bhardwaj16/", // TODO: add your handle
   },
 };
 
