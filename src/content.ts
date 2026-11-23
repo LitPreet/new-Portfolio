@@ -1,11 +1,12 @@
 // All site copy lives here — edit this file to update the portfolio.
 
 export const profile = {
-  name: "Preet Kumar", // shown on the page
+  name: "Preet Bhardwaj", // shown on the page
   fullName: "Preet Kumar Bhardwaj",
   searchName: "Preet Bhardwaj", // main name for Google
-  aliases: ["Preet Kumar", "Preet Kumar Bhardwaj", "प्रीत कुमार"],
-  nameNative: "प्रीत कुमार", // shown when the name is tapped / hovered
+  otherName: "Preet Kumar", // name on documents; kept for search
+  aliases: ["Preet Kumar", "Preet Kumar Bhardwaj", "प्रीत भारद्वाज"],
+  nameNative: "प्रीत भारद्वाज", // shown when the name is tapped / hovered
   role: "Frontend Engineer",
   initials: "PK",
   // Drop your photo at public/me.jpg and set this to "/me.jpg".

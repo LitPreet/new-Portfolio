@@ -13,8 +13,8 @@ export const siteUrl = (
 ).replace(/\/$/, "");
 
 export const seo = {
-  title: `${profile.searchName} (${profile.name}) · ${profile.role}`,
-  description: `${profile.searchName}, also known as ${profile.name}, is a frontend engineer in ${profile.city}, India. He builds fast, polished web apps with React, Next.js and TypeScript, and currently works on Mokkup.ai at NeenOpal.`,
+  title: `${profile.searchName} (${profile.otherName}) · ${profile.role}`,
+  description: `${profile.searchName}, also known as ${profile.otherName}, is a frontend engineer in ${profile.city}, India. He builds fast, polished web apps with React, Next.js and TypeScript, and currently works on Mokkup.ai at NeenOpal.`,
 };
 
 /** schema.org Person + WebSite, so Google knows every name refers to the same person. */
@@ -53,7 +53,7 @@ export function jsonLd() {
         "@id": `${siteUrl}/#website`,
         url: siteUrl,
         name: `${profile.searchName} · Portfolio`,
-        alternateName: [`${profile.name} portfolio`, `${profile.fullName} portfolio`],
+        alternateName: [`${profile.otherName} portfolio`, `${profile.fullName} portfolio`],
         publisher: { "@id": `${siteUrl}/#person` },
         inLanguage: "en-IN",
       },
